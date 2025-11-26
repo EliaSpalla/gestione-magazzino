@@ -1,5 +1,5 @@
 public class Pezzo {
-   private String nome;
+     private String nome;
      private String marca;
      private String modello;
      private String posizione;
@@ -8,42 +8,42 @@ public class Pezzo {
      private double costo;
      private int quantita;
 
-     public Pezzo(String nome, String marca){
-             if(nome!=null||nome.lenght>0){
+     public Pezzo(String nome, String marca, String modello, String posizione, int codice,int quantita, double prezzo, double costo){
+             if(nome!=null||!nome.isEmpty()){
                     this.nome=nome;
           }else{
                //eccexione
           }
 
-          if(modello!=null||modello.lenght>0){
+          if(modello!=null||modello.isEmpty()){
                this.modello=modello;
           }else{
                //eccexione
           }
 
-          if(posizione!=null||posizione.lenght>0){
+          if(posizione!=null||posizione.isEmpty()){
                this.posizione=posizione;
           }else{
                //eccexione
           }
-          if (marca!=null|| marca.lenght>0){
+          if (marca!=null|| marca.isEmpty()){
                this.marca=marca;
           } else{
                //eccexione
           }
-          if(codice!=null||codice>=0){
+          if(codice>0){
                this.codice=codice;
           }else{}
 
-          if(quantita!=null||quantita>=0){
+          if(quantita>0){
                this.quantita=quantita;
           }else{}
 
-          if(prezzo!=null||prezzo>=0){
+          if(prezzo>0){
                this.prezzo=prezzo;
           }else{}
 
-          if(costo!=null||costo>=0){
+          if(costo>0){
                this.costo=costo;
           }else{}
 
@@ -114,6 +114,16 @@ public class Pezzo {
      public double calcRicavo(){
       return prezzo-costo;
      }
-}
 
+
+
+
+
+
+
+
+
+
+
+}
 
