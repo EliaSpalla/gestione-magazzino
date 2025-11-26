@@ -9,41 +9,41 @@ public class Pezzo {
      private int quantita;
 
      public Pezzo(String nome, String marca){
-             if(nome!=null||nome.lenght<0){
+             if(nome!=null||nome.lenght>0){
                     this.nome=nome;
           }else{
                //eccexione
           }
 
-          if(modello!=null||modello.lenght<0){
+          if(modello!=null||modello.lenght>0){
                this.modello=modello;
           }else{
                //eccexione
           }
 
-          if(posizione!=null||posizione.lenght<0){
+          if(posizione!=null||posizione.lenght>0){
                this.posizione=posizione;
           }else{
                //eccexione
           }
-          if (marca!=null|| marca.lenght<0){
+          if (marca!=null|| marca.lenght>0){
                this.marca=marca;
           } else{
                //eccexione
           }
-          if(codice!=null||codice<=0){
+          if(codice!=null||codice>=0){
                this.codice=codice;
           }else{}
 
-          if(quantita!=null||quantita<=0){
+          if(quantita!=null||quantita>=0){
                this.quantita=quantita;
           }else{}
 
-          if(prezzo!=null||prezzo<=0){
+          if(prezzo!=null||prezzo>=0){
                this.prezzo=prezzo;
           }else{}
 
-          if(costo!=null||costo<=0){
+          if(costo!=null||costo>=0){
                this.costo=costo;
           }else{}
 
@@ -115,4 +115,5 @@ public class Pezzo {
       return prezzo-costo;
      }
 }
+
 
