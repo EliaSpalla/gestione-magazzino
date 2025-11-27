@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     static Pezzo[] magazzino = new Pezzo[5];
-
+    //funzione che stampa il magazzino
+    //funzioni della ricerca 
+    //calcolo sconto
     public static void main(String[] args) {
         magazzinoTest(); //inizializa array
         Scanner s=new Scanner(System.in);
