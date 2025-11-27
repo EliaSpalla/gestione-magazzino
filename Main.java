@@ -2,56 +2,72 @@ import java.util.Scanner;
 
 public class Main {
     static Pezzo[] magazzino = new Pezzo[5];
-    //funzione che stampa il magazzino
-    //funzioni della ricerca 
     //calcolo sconto
+
     public static void main(String[] args) {
         magazzinoTest(); //inizializa array
+        magazzinoStampa();
+
         Scanner s=new Scanner(System.in);
 
-        String risposta="o";
-        while(risposta.toUpperCase()!="M" ||risposta.toUpperCase()!="C"){
-            System.out.print("in base a cosa si vuole cercare il pezzo? (M per modello e marca/C per codice)");
-            risposta=s.next();
+        ricercaPezzo(s);
+
+        s.close();
+    }
+
+    public static void ricercaPezzo(Scanner s){
+        String risposta = "o";
+        while (!risposta.toUpperCase().equals("M") && !risposta.toUpperCase().equals("C")) {
+            System.out.print("In base a cosa si vuole cercare il pezzo? (M per modello e marca/C per codice): ");
+            risposta = s.next();
         }
 
-        if (risposta.toUpperCase()=="M"){
-            ricercaIndicePezzoModello(s);
+        s.nextLine(); // NECESSARIO per pulire il buffer
+        if (risposta.toUpperCase().equals("M")){
+            int indice=ricercaIndicePezzoModello(s);
+            if(indice!=-1){
+                System.out.print(magazzino[indice].toString());
+            }
         }else{
-            ricercaIndicePezzoCodice(s);
+            int indice=ricercaIndicePezzoCodice(s);
+            if(indice!=-1){
+                System.out.print(magazzino[indice].toString());
+            }
         }
-
-
     }
     public static int ricercaIndicePezzoModello(Scanner s){
-        System.out.print("\nPezzo: ");
-        String pezzo=s.next();
-        System.out.print("\nModello: ");
-        String modello=s.next();
-        System.out.print("\nMarca: ");
-        String marca=s.next();
+        System.out.print("Nome pezzo: ");
+        String nome = s.nextLine();
+        System.out.print("Modello: ");
+        String modello = s.nextLine();
+        System.out.print("Marca: ");
+        String marca = s.nextLine();
 
-        for(int i=0;i<magazzino.lenght;i++){
-            if(magazzino[i].getPezzo==pezzo||magazzino[i].getModello==modello||magazzino[i].getMarca==marca){
+        nome=nome.toUpperCase();
+        modello=modello.toUpperCase();
+        marca=marca.toUpperCase();
+
+        for(int i = 0; i < magazzino.length; i++){
+            if(magazzino[i].getNome().toUpperCase().equals(nome)
+                    && magazzino[i].getModello().toUpperCase().equals(modello)
+                    && magazzino[i].getMarca().toUpperCase().equals(marca)){
                 return i;
             }
         }
-        //lancia errore de pezzo non trovato
+        System.out.println("Dati sbagliati o pezzo inesistente");
+        return -1;
     }
     public static int ricercaIndicePezzoCodice(Scanner s){
-        System.out.print("\nCodice: ");
+        System.out.print("Codice: ");
         int codice=s.nextInt();
 
-        for(int i=0;i<magazzino.lenght;i++){
-            if(magazzino[i].getCodice==codice){
+        for(int i = 0; i < magazzino.length; i++){
+            if(magazzino[i].getCodice() == codice){
                 return i;
             }
         }
-        //lancia errore de pezzo non trovato
-    }
-
-    public static void magazzinoStampa(){
-        //riempi
+        System.out.println("Codice sbagliato o pezzo inesistente");
+        return -1;
     }
 
     public static void magazzinoTest() {
@@ -60,5 +76,13 @@ public class Main {
         magazzino[2] = new Pezzo("Candela CR9E", "NGK", "Kawasaki Z900", "R03-C", 3010, 50, 8.20, 3.80);
         magazzino[3] = new Pezzo("Catena Serie 520", "DID", "Ducati Monster 821", "R02-D", 4003, 10, 120.00, 65.00);
         magazzino[4] = new Pezzo("Batteria al Litio YT12B-BS", "Yuasa", "Suzuki GSX-R 750", "R04-E", 5022, 5, 155.00, 80.00);
+    }
+
+    public static void magazzinoStampa(){
+        System.out.println("--- Lista magazzino completa ---");
+        for(int i = 0; i < magazzino.length; i++){
+            System.out.println(magazzino[i].toString());
+        }
+        System.out.println("------------------------------");
     }
 }
