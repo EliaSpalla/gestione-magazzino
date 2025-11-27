@@ -31,12 +31,27 @@ public class Main {
         System.out.print("\nMarca: ");
         String marca=s.next();
 
-        return 1;//return indice
+        for(int i=0;i<magazzino.lenght;i++){
+            if(magazzino[i].getPezzo==pezzo||magazzino[i].getModello==modello||magazzino[i].getMarca==marca){
+                return i;
+            }
+        }
+        //lancia errore de pezzo non trovato
     }
     public static int ricercaIndicePezzoCodice(Scanner s){
         System.out.print("\nCodice: ");
         int codice=s.nextInt();
-        return 1;
+
+        for(int i=0;i<magazzino.lenght;i++){
+            if(magazzino[i].getCodice==codice){
+                return i;
+            }
+        }
+        //lancia errore de pezzo non trovato
+    }
+
+    public static void magazzinoStampa(){
+        //riempi
     }
 
     public static void magazzinoTest() {
