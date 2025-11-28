@@ -9,9 +9,7 @@ public class Main {
         magazzinoStampa();
 
         Scanner s=new Scanner(System.in);
-
         ricercaPezzo(s);
-
         s.close();
     }
 
