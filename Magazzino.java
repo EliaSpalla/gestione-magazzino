@@ -1,60 +1,48 @@
- import java.util.Scanner;
+import java.util.Scanner;
 
 public class Magazzino {
    static  Pezzo[] magazzino = new Pezzo[5];
 
-    public static void ricercaPezzo(Scanner s){
+    public static void InterfacciaRicerca(Scanner s){
         String risposta = "o";
-        while (!risposta.toUpperCase().equals("M") && !risposta.toUpperCase().equals("C")) {
+        while (!risposta.equals("M") && !risposta.equals("C")) {
             System.out.print("In base a cosa si vuole cercare il pezzo? (M per modello e marca/C per codice): ");
-            risposta = s.next();
+            risposta = s.next().toUpperCase();
         }
+        Pezzo appoggioUtente = new Pezzo("a","a","a",-1);
 
         s.nextLine(); // NECESSARIO per pulire il buffer
-        if (risposta.toUpperCase().equals("M")){
-            int indice=ricercaIndicePezzoModello(s);
-            if(indice!=-1){
-                System.out.print(magazzino[indice].toString());
-            }
-        }else{
-            int indice=ricercaIndicePezzoCodice(s);
-            if(indice!=-1){
-                System.out.print(magazzino[indice].toString());
-            }
+        if(risposta.equals("M")){
+            System.out.print("Nome pezzo: ");
+            String nome = s.nextLine();
+            System.out.print("Modello: ");
+            String modello = s.nextLine();
+            System.out.print("Marca: ");
+            String marca = s.nextLine();
+
+            appoggioUtente.setNome(nome);
+            appoggioUtente.setMarca(marca);
+            appoggioUtente.setModello(modello);
+
+        }else if(risposta.equals("C")){
+            System.out.print("Codice: ");
+            int codice=s.nextInt();
+
+            appoggioUtente.setCodice(codice);
         }
+
+        ricercaIndicePezzo(appoggioUtente);
     }
-    public static int ricercaIndicePezzoModello(Scanner s){
-        System.out.print("Nome pezzo: ");
-        String nome = s.nextLine();
-        System.out.print("Modello: ");
-        String modello = s.nextLine();
-        System.out.print("Marca: ");
-        String marca = s.nextLine();
-
-        nome=nome.toUpperCase();
-        modello=modello.toUpperCase();
-        marca=marca.toUpperCase();
-
-        for(int i = 0; i < magazzino.length; i++){
-            if(magazzino[i].getNome().toUpperCase().equals(nome)
-                    && magazzino[i].getModello().toUpperCase().equals(modello)
-                    && magazzino[i].getMarca().toUpperCase().equals(marca)){
+    public static int ricercaIndicePezzo(Pezzo appoggioUtente){
+        int i=0;
+        for(Pezzo p:magazzino) {
+            if(appoggioUtente.equals(p)){
+                System.out.println(p.toString());
                 return i;
             }
+            i++;
         }
         System.out.println("Dati sbagliati o pezzo inesistente");
-        return -1;
-    }
-    public static int ricercaIndicePezzoCodice(Scanner s){
-        System.out.print("Codice: ");
-        int codice=s.nextInt();
-
-        for(int i = 0; i < magazzino.length; i++){
-            if(magazzino[i].getCodice() == codice){
-                return i;
-            }
-        }
-        System.out.println("Codice sbagliato o pezzo inesistente");
         return -1;
     }
 
