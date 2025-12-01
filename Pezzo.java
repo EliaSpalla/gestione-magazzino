@@ -15,6 +15,12 @@ public class Pezzo {
             //eccexione
         }
 
+        if (marca!=null|| marca.isEmpty()){
+            this.marca=marca;
+        } else{
+            //eccexione
+        }
+
         if(modello!=null||modello.isEmpty()){
             this.modello=modello;
         }else{
@@ -26,11 +32,7 @@ public class Pezzo {
         }else{
             //eccexione
         }
-        if (marca!=null|| marca.isEmpty()){
-            this.marca=marca;
-        } else{
-            //eccexione
-        }
+
         if(codice>0){
             this.codice=codice;
         }else{}
@@ -47,6 +49,29 @@ public class Pezzo {
             this.costo=costo;
         }else{}
 
+    }
+    public Pezzo(String nome,String marca,String modello, int codice){
+        if(nome!=null||!nome.isEmpty()){
+            this.nome=nome;
+        }else{
+            //eccexione
+        }
+
+        if (marca!=null|| marca.isEmpty()){
+            this.marca=marca;
+        } else{
+            //eccexione
+        }
+
+        if(modello!=null||modello.isEmpty()){
+            this.modello=modello;
+        }else{
+            //eccexione
+        }
+
+        if(codice>0){
+            this.codice=codice;
+        }else{}
     }
 
     public String getNome() {
@@ -129,4 +154,21 @@ public class Pezzo {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) { //controlla se il puntatore punta a questa instanza
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) { //controlla se l'oggetto è vuoto o di un altra classe
+            return false;
+        }
+
+
+        if (this.codice == ((Pezzo) obj).codice || (this.nome.toUpperCase().equals(((Pezzo) obj).nome.toUpperCase()) && this.marca.toUpperCase().equals(((Pezzo) obj).marca.toUpperCase()) && this.modello.toUpperCase().equals(((Pezzo) obj).modello.toUpperCase()))) {
+            //deve avere lo stesso codice O nome, marca e modello uguali
+            return true;
+        }
+        return false;
+    }
 }
