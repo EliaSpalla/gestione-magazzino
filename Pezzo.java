@@ -1,4 +1,6 @@
-public class Pezzo {
+import java.io.Serializable;
+
+public class Pezzo implements Serializable{
     private String nome;
     private String marca;
     private String modello;
@@ -9,67 +11,65 @@ public class Pezzo {
     private int quantita;
 
     public Pezzo(String nome, String marca, String modello, String posizione, int codice,int quantita, double prezzo, double costo){
-        if(nome!=null && !nome.isEmpty()){
+        if(nome!=null||!nome.isEmpty()){
             this.nome=nome;
         }else{
-            throw new IllegalArgumentException("nome non valido, riprovace");
+            //eccexione
         }
 
-        if (marca!=null && marca.isEmpty()){
+        if (marca!=null|| marca.isEmpty()){
             this.marca=marca;
         } else{
-            throw new IllegalArgumentException("marca non valido, riprovace");
+            //eccexione
         }
 
-        if(modello!=null && modello.isEmpty()){
+        if(modello!=null||modello.isEmpty()){
             this.modello=modello;
         }else{
-            throw new IllegalArgumentException("modello non valido, riprovace");
+            //eccexione
         }
 
-        if(posizione!=null && posizione.isEmpty()){
+        if(posizione!=null||posizione.isEmpty()){
             this.posizione=posizione;
         }else{
-            throw new IllegalArgumentException("posizione non valido, riprovace");
+            //eccexione
         }
 
         if(codice>0){
             this.codice=codice;
-        }else{
-            throw new IllegalArgumentException("codice non valido, riprovace");
-        }
+        }else{}
 
         if(quantita>0){
             this.quantita=quantita;
-        }else{
-            throw new IllegalArgumentException("quantita non valido, riprovace");
-        }
+        }else{}
 
         if(prezzo>0){
             this.prezzo=prezzo;
-        }else{
-            throw new IllegalArgumentException("prezzo non valido, riprovace");
-        }
+        }else{}
 
         if(costo>0){
             this.costo=costo;
-        }else{
-            throw new IllegalArgumentException("costo non valido, riprovace");
-        }
+        }else{}
 
     }
     public Pezzo(String nome,String marca,String modello, int codice){
         if(nome!=null||!nome.isEmpty()){
             this.nome=nome;
-        }else{}
+        }else{
+            //eccexione
+        }
 
         if (marca!=null|| marca.isEmpty()){
             this.marca=marca;
-        } else{}
+        } else{
+            //eccexione
+        }
 
         if(modello!=null||modello.isEmpty()){
             this.modello=modello;
-        }else{}
+        }else{
+            //eccexione
+        }
 
         if(codice>0){
             this.codice=codice;
@@ -145,14 +145,14 @@ public class Pezzo {
     @Override
     public String toString() {
         return "Pezzo {" +
-                "nome='" + nome + '\'' +
-                ", marca='" + marca + '\'' +
+                "codice=" + codice +
+                ", nome='" + nome + '\'' +
                 ", modello='" + modello + '\'' +
+                ", marca='" + marca + '\'' +
                 ", posizione='" + posizione + '\'' +
-                ", codice=" + codice +
-                ", prezzo=" + String.format("%.2f", prezzo) + // Formatta per 2 cifre decimali
-                ", costo=" + String.format("%.2f", costo) +   // Formatta per 2 cifre decimali
                 ", quantita=" + quantita +
+                ", prezzo=" + String.format("%.2f", prezzo) +
+                ", costo=" + String.format("%.2f", costo) +
                 '}';
     }
 
@@ -173,4 +173,7 @@ public class Pezzo {
         }
         return false;
     }
+
+
+
 }
