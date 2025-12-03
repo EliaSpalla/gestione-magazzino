@@ -9,65 +9,67 @@ public class Pezzo {
     private int quantita;
 
     public Pezzo(String nome, String marca, String modello, String posizione, int codice,int quantita, double prezzo, double costo){
-        if(nome!=null||!nome.isEmpty()){
+        if(nome!=null && !nome.isEmpty()){
             this.nome=nome;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("nome non valido, riprovace");
         }
 
-        if (marca!=null|| marca.isEmpty()){
+        if (marca!=null && marca.isEmpty()){
             this.marca=marca;
         } else{
-            //eccexione
+            throw new IllegalArgumentException("marca non valido, riprovace");
         }
 
-        if(modello!=null||modello.isEmpty()){
+        if(modello!=null && modello.isEmpty()){
             this.modello=modello;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("modello non valido, riprovace");
         }
 
-        if(posizione!=null||posizione.isEmpty()){
+        if(posizione!=null && posizione.isEmpty()){
             this.posizione=posizione;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("posizione non valido, riprovace");
         }
 
         if(codice>0){
             this.codice=codice;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("codice non valido, riprovace");
+        }
 
         if(quantita>0){
             this.quantita=quantita;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("quantita non valido, riprovace");
+        }
 
         if(prezzo>0){
             this.prezzo=prezzo;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("prezzo non valido, riprovace");
+        }
 
         if(costo>0){
             this.costo=costo;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("costo non valido, riprovace");
+        }
 
     }
     public Pezzo(String nome,String marca,String modello, int codice){
         if(nome!=null||!nome.isEmpty()){
             this.nome=nome;
-        }else{
-            //eccexione
-        }
+        }else{}
 
         if (marca!=null|| marca.isEmpty()){
             this.marca=marca;
-        } else{
-            //eccexione
-        }
+        } else{}
 
         if(modello!=null||modello.isEmpty()){
             this.modello=modello;
-        }else{
-            //eccexione
-        }
+        }else{}
 
         if(codice>0){
             this.codice=codice;
