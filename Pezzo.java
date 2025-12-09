@@ -14,66 +14,76 @@ public class Pezzo implements Serializable{
         if(nome!=null||!nome.isEmpty()){
             this.nome=nome;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("il nome non può essere nullo o vuoto.");
         }
 
         if (marca!=null|| marca.isEmpty()){
             this.marca=marca;
         } else{
-            //eccexione
+            throw new IllegalArgumentException("la marca non può essere nulla o vuota.");
         }
 
         if(modello!=null||modello.isEmpty()){
             this.modello=modello;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("il modello non può essere nullo o vuoto.");
         }
 
         if(posizione!=null||posizione.isEmpty()){
             this.posizione=posizione;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("la posizione non può essere nulla o vuota.");
         }
 
         if(codice>0){
             this.codice=codice;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("il codice non può essere nullo o vuoto.");
+        }
 
         if(quantita>0){
             this.quantita=quantita;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("la quantita non può essere nulla o vuota.");
+        }
 
         if(prezzo>0){
             this.prezzo=prezzo;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("il prezzo non può essere nullo o vuoto.");
+        }
 
         if(costo>0){
             this.costo=costo;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("il costo non può essere nullo o vuoto.");
+        }
 
     }
     public Pezzo(String nome,String marca,String modello, int codice){
         if(nome!=null||!nome.isEmpty()){
             this.nome=nome;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("il nome non può essere nullo o vuoto.");
         }
 
         if (marca!=null|| marca.isEmpty()){
             this.marca=marca;
-        } else{
-            //eccexione
+        }else{
+            throw new IllegalArgumentException("la marca non può essere nulla o vuota.");
         }
 
         if(modello!=null||modello.isEmpty()){
             this.modello=modello;
         }else{
-            //eccexione
+            throw new IllegalArgumentException("il modello non può essere nullo o vuoto.");
         }
 
         if(codice>0){
             this.codice=codice;
-        }else{}
+        }else{
+            throw new IllegalArgumentException("il codice non può essere nullo o vuoto.");
+        }
     }
 
     public String getNome() {
@@ -173,7 +183,5 @@ public class Pezzo implements Serializable{
         }
         return false;
     }
-
-
 
 }
